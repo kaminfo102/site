@@ -1,0 +1,125 @@
+---
+import { motion } from "framer-motion";
+
+const articles = [
+  {
+    title: 'تأثیر محاسبات ذهنی بر رشد مغز کودکان',
+    excerpt: 'در این مقاله به بررسی تأثیرات مثبت یادگیری محاسبات ذهنی بر رشد شناختی و عملکرد مغز کودکان می‌پردازیم.',
+    image: 'https://img.freepik.com/free-photo/kids-learning-together_23-2149198773.jpg',
+    category: 'روانشناسی',
+    date: '۱۵ فروردین ۱۴۰۳',
+    readTime: '۵ دقیقه',
+    author: {
+      name: 'دکتر سارا محمدی',
+      image: 'https://i.pravatar.cc/150?img=1'
+    }
+  },
+  {
+    title: 'آشنایی با مفاهیم پایه رباتیک',
+    excerpt: 'مروری بر مفاهیم اولیه رباتیک و نحوه آموزش آن به کودکان و نوجوانان علاقه‌مند به فناوری.',
+    image: 'https://img.freepik.com/free-photo/kids-playing-with-robot_23-2149198785.jpg',
+    category: 'رباتیک',
+    date: '۱۲ فروردین ۱۴۰۳',
+    readTime: '۷ دقیقه',
+    author: {
+      name: 'مهندس علی کریمی',
+      image: 'https://i.pravatar.cc/150?img=2'
+    }
+  },
+  {
+    title: 'راهنمای والدین برای آموزش برنامه‌نویسی',
+    excerpt: 'نکات کاربردی برای والدینی که می‌خواهند فرزندانشان را با دنیای برنامه‌نویسی آشنا کنند.',
+    image: 'https://img.freepik.com/free-photo/children-learning-code_23-2149198804.jpg',
+    category: 'برنامه‌نویسی',
+    date: '۱۰ فروردین ۱۴۰۳',
+    readTime: '۶ دقیقه',
+    author: {
+      name: 'زهرا حسینی',
+      image: 'https://i.pravatar.cc/150?img=3'
+    }
+  }
+];
+---
+
+<section class="py-20">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        آخرین مقالات آموزشی
+      </h2>
+      <p class="text-gray-600 dark:text-gray-300">
+        با مطالعه مقالات ما، با آخرین متدهای آموزشی و تربیتی آشنا شوید
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {articles.map((article) => (
+        <motion.article
+          client:load
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          class="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+        >
+          <div class="relative">
+            <img
+              src={article.image}
+              alt={article.title}
+              class="w-full h-48 object-cover"
+            />
+            <span class="absolute top-4 right-4 bg-primary-500 text-white px-3 py-1 rounded-full text-sm">
+              {article.category}
+            </span>
+          </div>
+          
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              {article.title}
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              {article.excerpt}
+            </p>
+            
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center space-x-3 space-x-reverse">
+                <img
+                  src={article.author.image}
+                  alt={article.author.name}
+                  class="w-10 h-10 rounded-full"
+                />
+                <div>
+                  <span class="block text-sm font-medium text-gray-900 dark:text-white">
+                    {article.author.name}
+                  </span>
+                  <span class="block text-sm text-gray-500 dark:text-gray-400">
+                    {article.date}
+                  </span>
+                </div>
+              </div>
+              <span class="text-sm text-gray-500 dark:text-gray-400">
+                {article.readTime} مطالعه
+              </span>
+            </div>
+            
+            <button class="w-full bg-gray-100 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-500 text-gray-800 dark:text-white py-2 px-4 rounded-lg transition-colors text-sm font-medium">
+              ادامه مطلب
+            </button>
+          </div>
+        </motion.article>
+      ))}
+    </div>
+
+    <div class="text-center mt-12">
+      <a
+        href="/articles"
+        class="inline-flex items-center space-x-2 space-x-reverse bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-lg transition-colors"
+      >
+        <span>مشاهده همه مقالات</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

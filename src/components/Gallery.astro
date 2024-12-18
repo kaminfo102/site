@@ -1,0 +1,78 @@
+---
+import { motion } from "framer-motion";
+
+const images = [
+  {
+    src: "https://img.freepik.com/free-photo/kids-learning-together_23-2149198771.jpg",
+    title: "کلاس محاسبات ذهنی",
+    category: "آموزشی"
+  },
+  {
+    src: "https://img.freepik.com/free-photo/children-making-robot_23-2149198789.jpg",
+    title: "کارگاه رباتیک",
+    category: "رباتیک"
+  },
+  {
+    src: "https://img.freepik.com/free-photo/children-learning-code_23-2149198808.jpg",
+    title: "کلاس برنامه‌نویسی",
+    category: "برنامه‌نویسی"
+  },
+  {
+    src: "https://img.freepik.com/free-photo/kids-playing-with-robot_23-2149198787.jpg",
+    title: "مسابقات رباتیک",
+    category: "رویدادها"
+  },
+  {
+    src: "https://img.freepik.com/free-photo/children-doing-math_23-2149198779.jpg",
+    title: "مسابقات محاسبات ذهنی",
+    category: "رویدادها"
+  },
+  {
+    src: "https://img.freepik.com/free-photo/programming-background-with-code_23-2149198803.jpg",
+    title: "جشنواره برنامه‌نویسی",
+    category: "رویدادها"
+  }
+];
+---
+
+<section class="py-20">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        گالری تصاویر
+      </h2>
+      <p class="text-gray-600 dark:text-gray-300">
+        نگاهی به لحظات شاد و آموزنده در آکادمی نخبگان
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {images.map((image, index) => (
+        <motion.div
+          client:load
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          class="group relative overflow-hidden rounded-lg shadow-lg aspect-video cursor-pointer"
+        >
+          <img
+            src={image.src}
+            alt={image.title}
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <span class="inline-block px-3 py-1 bg-primary-500 text-white text-sm rounded-full mb-2">
+                {image.category}
+              </span>
+              <h3 class="text-xl font-bold text-white">
+                {image.title}
+              </h3>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+---
+import Carousel from './Carousel';
+
+const slides = [
+  {
+    title: 'آموزش محاسبات ذهنی با چرتکه',
+    description: 'تقویت مهارت‌های ریاضی و افزایش تمرکز با روش‌های نوین',
+    image: 'https://img.freepik.com/free-photo/kids-learning-together_23-2149198771.jpg',
+  },
+  {
+    title: 'کلاس‌های رباتیک',
+    description: 'ساخت و برنامه‌نویسی ربات‌ها برای کودکان و نوجوانان',
+    image: 'https://img.freepik.com/free-photo/children-making-robot_23-2149198789.jpg',
+  },
+  {
+    title: 'دوره‌های برنامه‌نویسی',
+    description: 'آموزش مفاهیم پایه برنامه‌نویسی به زبان ساده',
+    image: 'https://img.freepik.com/free-photo/children-learning-code_23-2149198808.jpg',
+  }
+];
+---
+
+<section class="relative h-screen">
+  <Carousel client:load slides={slides} />
+</section>
+
+<style is:global>
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white !important;
+  }
+  
+  .swiper-pagination-bullet {
+    background: white !important;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background: var(--primary-500) !important;
+  }
+</style>

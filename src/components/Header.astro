@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import MobileMenu from './MobileMenu';
+
+const menuItems = [
+  { title: 'صفحه اصلی', href: '/' },
+  { title: 'درباره ما', href: '/about' },
+  { title: 'دوره‌ها', href: '/courses' },
+  { title: 'رویدادها', href: '/events' },
+  { title: 'مقالات', href: '/articles' },
+  { title: 'گالری', href: '/gallery' },
+  { title: 'تماس با ما', href: '/contact' },
+];
+---
+
+<header class="fixed w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg z-50 shadow-sm">
+  <nav class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-2 space-x-reverse">
+        <img src="/logo.svg" alt="آکادمی نخبگان" class="w-10 h-10" />
+        <div>
+          <span class="text-2xl font-bold text-primary-600 dark:text-primary-400 block">آکادمی نخبگان</span>
+          <span class="text-sm text-gray-500 dark:text-gray-400">آموزش خلاق کودک و نوجوان</span>
+        </div>
+      </a>
+      
+      <div class="hidden lg:flex items-center space-x-8 space-x-reverse">
+        {menuItems.map(item => (
+          <a
+            href={item.href}
+            class="text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 transition-colors relative group py-2"
+          >
+            {item.title}
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-right"></span>
+          </a>
+        ))}
+        <button class="bg-primary-500 hover:bg-primary-600 text-white px-6 py-2 rounded-lg transition-colors">
+          ورود / ثبت‌نام
+        </button>
+      </div>
+      
+      <MobileMenu client:load items={menuItems} />
+    </div>
+  </nav>
+</header>

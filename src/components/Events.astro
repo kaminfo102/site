@@ -1,0 +1,93 @@
+---
+import { motion } from "framer-motion";
+import moment from 'jalali-moment';
+
+const events = [
+  {
+    title: 'مسابقه محاسبات ذهنی',
+    date: '1403-01-15',
+    time: '15:00',
+    location: 'سالن همایش‌های آکادمی',
+    description: 'مسابقه محاسبات ذهنی برای رده‌های سنی مختلف با جوایز ارزنده',
+    image: 'https://img.freepik.com/free-photo/children-doing-math_23-2149198779.jpg'
+  },
+  {
+    title: 'نمایشگاه رباتیک',
+    date: '1403-01-20',
+    time: '16:30',
+    location: 'سالن نمایشگاه‌های آکادمی',
+    description: 'نمایش پروژه‌های رباتیک دانش‌آموزان و معرفی دوره‌های جدید',
+    image: 'https://img.freepik.com/free-photo/kids-playing-with-robot_23-2149198787.jpg'
+  },
+  {
+    title: 'کارگاه برنامه‌نویسی',
+    date: '1403-01-25',
+    time: '14:00',
+    location: 'کلاس شماره ۳ آکادمی',
+    description: 'کارگاه آموزشی مقدماتی برنامه‌نویسی برای نوجوانان',
+    image: 'https://img.freepik.com/free-photo/children-learning-code_23-2149198806.jpg'
+  }
+];
+---
+
+<section class="py-20 bg-gray-50 dark:bg-gray-800">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        رویدادهای پیش رو
+      </h2>
+      <p class="text-gray-600 dark:text-gray-300">
+        با شرکت در رویدادهای ما، مهارت‌های خود را به چالش بکشید
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {events.map((event) => (
+        <motion.div
+          client:load
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          class="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+        >
+          <img
+            src={event.image}
+            alt={event.title}
+            class="w-full h-48 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              {event.title}
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">
+              {event.description}
+            </p>
+            <div class="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              {moment(event.date, 'jYYYY-jMM-jDD').format('jD jMMMM jYYYY')}
+            </div>
+            <div class="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {event.time}
+            </div>
+            <div class="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              {event.location}
+            </div>
+            <button class="w-full bg-primary-500 hover:bg-primary-600 text-white py-2 px-4 rounded-lg transition-colors">
+              ثبت‌نام در رویداد
+            </button>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>

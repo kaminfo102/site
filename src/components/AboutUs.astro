@@ -1,0 +1,116 @@
+---
+import { motion } from "framer-motion";
+
+const features = [
+  {
+    icon: "🎯",
+    title: "آموزش تخصصی",
+    description: "بهره‌گیری از جدیدترین متدهای آموزشی دنیا با تمرکز بر یادگیری عمیق و کاربردی"
+  },
+  {
+    icon: "👨‍🏫",
+    title: "اساتید مجرب",
+    description: "همکاری با بهترین اساتید و مربیان با سال‌ها تجربه در آموزش کودک و نوجوان"
+  },
+  {
+    icon: "🤖",
+    title: "تجهیزات پیشرفته",
+    description: "استفاده از مدرن‌ترین تجهیزات آموزشی و کمک آموزشی در کلاس‌ها"
+  },
+  {
+    icon: "🎨",
+    title: "محیط خلاق",
+    description: "ایجاد فضای شاد و خلاق برای یادگیری بهتر و لذت‌بخش‌تر"
+  }
+];
+---
+
+<section class="py-20">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          درباره آکادمی نخبگان
+        </h2>
+        <p class="text-gray-600 dark:text-gray-300">
+          ما با بیش از ۱۰ سال تجربه در زمینه آموزش کودک و نوجوان، همواره در تلاش برای ارائه بهترین خدمات آموزشی هستیم
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <motion.div
+          client:load
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          class="relative"
+        >
+          <img
+            src="https://img.freepik.com/free-photo/teacher-helping-kids-with-their-robotics-project_23-2149198772.jpg"
+            alt="کلاس رباتیک"
+            class="w-full h-[400px] object-cover rounded-lg shadow-lg"
+          />
+          <div class="absolute inset-0 bg-primary-500/10 rounded-lg"></div>
+        </motion.div>
+
+        <motion.div
+          client:load
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          class="flex flex-col justify-center"
+        >
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            چرا آکادمی نخبگان؟
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+            آکادمی نخبگان با هدف پرورش استعدادهای درخشان در حوزه‌های علمی و فناوری، محیطی پویا و خلاق را برای یادگیری کودکان و نوجوانان فراهم می‌کند. ما معتقدیم که هر کودک استعدادهای منحصر به فردی دارد که با آموزش صحیح می‌تواند شکوفا شود.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-center text-gray-600 dark:text-gray-300">
+              <svg class="w-5 h-5 text-primary-500 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+              </svg>
+              بیش از ۱۰۰۰ دانش‌آموز موفق
+            </li>
+            <li class="flex items-center text-gray-600 dark:text-gray-300">
+              <svg class="w-5 h-5 text-primary-500 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+              </svg>
+              کسب رتبه‌های برتر در مسابقات ملی و بین‌المللی
+            </li>
+            <li class="flex items-center text-gray-600 dark:text-gray-300">
+              <svg class="w-5 h-5 text-primary-500 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"></path>
+              </svg>
+              همکاری با بهترین مراکز آموزشی دنیا
+            </li>
+          </ul>
+        </motion.div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {features.map((feature, index) => (
+          <motion.div
+            client:load
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow text-center"
+          >
+            <div class="text-4xl mb-4">{feature.icon}</div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              {feature.title}
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              {feature.description}
+            </p>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

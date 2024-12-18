@@ -1,0 +1,48 @@
+---
+import '@fontsource-variable/vazirmatn';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ThemeToggle from '../components/ThemeToggle';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fa" dir="rtl" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="موسسه آموزشی کودک و نوجوان" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="font-vazirmatn bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <Header />
+    <ThemeToggle client:load />
+    <slot />
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --swiper-theme-color: #0ea5e9 !important;
+  }
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 50%;
+    color: #0ea5e9 !important;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background-color: #0ea5e9 !important;
+  }
+</style>
